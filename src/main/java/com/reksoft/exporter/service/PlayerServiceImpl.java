@@ -25,10 +25,29 @@ public class PlayerServiceImpl implements PlayerService {
     private Player map(PlayerViewDto playerViewDto) {
         Player player = new Player();
         player.setId(playerViewDto.getId());
-        player.setCountry(player.getCountry());
-        player.setNickname(playerViewDto.getCombinedName());
-        player.setFullName(playerViewDto.getCombinedName());
+        player.setCombinedName(playerViewDto.getCombinedName());
+        player.setNickname(playerViewDto.getNickName());
+        player.setFullName(buildFullName(
+                playerViewDto.getCombinedName(),
+                playerViewDto.getNickName()
+        ));
+        player.setCountry(playerViewDto.getCountry());
         player.setTeamName(playerViewDto.getTeamName());
         return player;
+    }
+
+    private String buildFullName(String combinedName, String nickName) {
+
+        if (nickName == null || nickName.isBlank()) {
+            return combinedName;
+        }
+
+        String[] parts = combinedName.split(" ", 2);
+
+        if (parts.length < 2) {
+            return combinedName;
+        }
+
+        return parts[0] + " \"" + nickName + "\" " + parts[1];
     }
 }
