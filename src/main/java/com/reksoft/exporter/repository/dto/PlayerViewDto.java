@@ -7,6 +7,6 @@ public class PlayerViewDto {
     private Integer id;
     private String combinedName;
     private String nickName;
-    private Integer country;
+    private String country;
     private String teamName;
 }

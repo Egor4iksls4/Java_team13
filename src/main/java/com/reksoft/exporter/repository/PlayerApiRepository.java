@@ -32,7 +32,7 @@ public class PlayerApiRepository implements PlayerRepository {
     }
 
     public List<PlayerViewDto> getFilteredPlayers(String filter) {
-        String uri = UriComponentsBuilder.fromHttpUrl(apiProperties.getBaseUrl() + "/api/Players/filter")
+        String uri = UriComponentsBuilder.fromUriString(apiProperties.getBaseUrl() + "/api/Players/filter")
                 .queryParam("filter", filter)
                 .toUriString();
 

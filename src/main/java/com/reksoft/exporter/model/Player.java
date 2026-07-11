@@ -8,6 +8,6 @@ public class Player {
     private String combinedName;
     private String fullName;
     private String nickname;
-    private Integer country;
+    private String country;
     private String teamName;
 }
